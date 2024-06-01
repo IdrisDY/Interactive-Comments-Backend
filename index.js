@@ -16,8 +16,8 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then((res) => { 
     
-    app.listen("5000", (req, res) => {
-      console.log("Started listening thank you");
+    app.listen(process.env.PORT, (req, res) => {
+      console.log("Started listening thank you",process.env.PORT);
     });
   })
   .catch((err) => {
