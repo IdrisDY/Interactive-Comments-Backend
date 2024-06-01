@@ -10,10 +10,6 @@ const getAllComments = async (req, res) => {
 };
 const createReply = async (req, res) => {
   try {
-    // const { id } = req.params;
-    // if (!mongoose.Types.ObjectId.isValid(id)) {
-    //   return res.status(404).json({ error: "No such comments" });
-    // }
     console.log(req.body);
  
     const reply = await commentOrReply.create(req.body);
@@ -42,7 +38,7 @@ const deleteReply = async (req, res) => {
 
     console.log(req.body);
  
-    const reply = await commentOrReply.find({id:id});
+    const reply = await commentOrReply.findOneAndDelete({id:id},{new:true});
     res.json(reply);
   } catch (error) {
     console.error("Error:", error);
